@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portofolio Valentino — siswa SMK Teknik Komputer dan Jaringan." />
+  <title>Portofolio | Valentino</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111b2e;
+      --panel-light: #17243a;
+      --text: #eef4ff;
+      --muted: #a8b6cc;
+      --accent: #537d96;
+      --accent-2: #0b204b;
+      --border: rgba(255,255,255,.10);
+      --radius: 22px;
+      --max-width: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(98,230,197,.09), transparent 28rem),
+        radial-gradient(circle at 90% 25%, rgba(122,167,255,.10), transparent 30rem),
+        var(--bg);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max-width), calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 88px 0; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; font-size: .78rem; font-weight: 800; letter-spacing: .16em; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin: 8px 0 14px; }
+    .section-intro { color: var(--muted); max-width: 650px; }
+
+    
+    .navbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11,17,32,.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 900; font-size: 1.1rem; letter-spacing: -.04em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .92rem; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .nav-cta { color: var(--bg) !important; background: var(--accent); padding: 10px 16px; border-radius: 999px; font-weight: 800; }
+
+    /* Hero */
+    .hero { min-height: 610px; display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 64px; padding-top: 70px; padding-bottom: 70px; }
+    .hero h1 { font-size: clamp(2.7rem, 6.5vw, 5rem); letter-spacing: -.065em; line-height: 1.04; margin: 18px 0; }
+    .hero h1 span { color: var(--accent); }
+    .hero-copy { color: var(--muted); font-size: 1.05rem; max-width: 620px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 12px; font-weight: 800; border: 1px solid var(--border); transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--accent); color: #082019; border-color: var(--accent); }
+    .button-secondary { background: rgba(255,255,255,.04); }
+    .hero-note { margin-top: 24px; color: var(--muted); font-size: .9rem; }
+    .hero-note strong { color: var(--text); }
+    .portrait-wrap { position: relative; max-width: 360px; width: 100%; justify-self: end; }
+    .portrait-frame { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 34px; border: 1px solid rgba(98,230,197,.45); background: var(--panel); box-shadow: 0 30px 90px rgba(0,0,0,.35); transform: rotate(2deg); }
+    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait-tag { position: absolute; left: -28px; bottom: 28px; border: 1px solid var(--border); background: #152238; padding: 14px 18px; border-radius: 16px; box-shadow: 0 18px 45px rgba(0,0,0,.3); transform: rotate(-2deg); }
+    .portrait-tag small { display: block; color: var(--muted); font-size: .76rem; }
+    .portrait-tag strong { color: var(--accent); }
+
+    /* General cards */
+    .panel { background: linear-gradient(145deg, rgba(23,36,58,.92), rgba(17,27,46,.85)); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; margin-top: 30px; }
+    .about-highlight { display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; }
+    .big-number { font-size: 2.7rem; font-weight: 900; color: var(--accent); line-height: 1.1; }
+    .about-highlight p, .about-text p { color: var(--muted); }
+    .about-text p + p { margin-top: 14px; }
+    .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 20px; }
+    .info-item { padding: 14px; background: rgba(255,255,255,.035); border-radius: 14px; }
+    .info-item small { display: block; color: var(--muted); margin-bottom: 3px; }
+    .info-item strong { overflow-wrap: anywhere; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 30px; }
+    .skill-card h3 { margin-bottom: 9px; }
+    .skill-card p { color: var(--muted); font-size: .94rem; }
+    .skill-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: rgba(98,230,197,.11); color: var(--accent); font-weight: 900; margin-bottom: 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag { display: inline-block; padding: 5px 10px; border: 1px solid var(--border); border-radius: 999px; color: #d5e2f5; font-size: .78rem; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 30px; }
+    .project-card { display: flex; flex-direction: column; min-height: 285px; transition: transform .2s, border-color .2s; }
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(98,230,197,.45); }
+    .project-label { color: var(--accent); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .project-card h3 { font-size: 1.2rem; margin: 10px 0; }
+    .project-card p { color: var(--muted); font-size: .93rem; }
+    .project-link { margin-top: auto; padding-top: 22px; color: var(--accent); font-weight: 800; font-size: .9rem; }
+
+    .education-list { margin-top: 30px; display: grid; gap: 14px; }
+    .education-item { display: grid; grid-template-columns: 150px 1fr; gap: 22px; align-items: start; }
+    .education-date { color: var(--accent); font-weight: 800; }
+    .education-item h3 { margin-bottom: 4px; }
+    .education-item p { color: var(--muted); }
+
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; margin-top: 30px; }
+    .contact-copy { color: var(--muted); margin-top: 12px; }
+    .contact-list { display: grid; gap: 12px; }
+    .contact-link { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 15px 17px; background: rgba(255,255,255,.035); border: 1px solid var(--border); border-radius: 14px; }
+    .contact-link span:first-child { color: var(--muted); font-size: .9rem; }
+    .contact-link strong { overflow-wrap: anywhere; text-align: right; }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 800px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; gap: 12px; }
+      .nav-links { width: 100%; flex-wrap: wrap; gap: 10px 18px; }
+      .nav-cta { padding: 6px 12px; }
+      .hero { grid-template-columns: 1fr; gap: 46px; min-height: auto; }
+      .portrait-wrap { justify-self: center; max-width: 300px; }
+      .portrait-tag { left: -12px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid, .projects-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 540px) {
+      .container { width: min(var(--max-width), calc(100% - 28px)); }
+      .section { padding: 64px 0; }
+      .hero { padding-top: 54px; padding-bottom: 45px; }
+      .hero h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
+      .skills-grid, .projects-grid, .info-grid { grid-template-columns: 1fr; }
+      .education-item { grid-template-columns: 1fr; gap: 4px; }
+      .panel { padding: 21px; }
+      .nav-links { gap: 8px 14px; }
+      .nav-links a { font-size: .84rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Navigasi utama">
+      <a class="brand" href="#home">VAL<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#education">Pendidikan</a></li>
+        <li><a class="nav-cta" href="#contact">Hubungi Saya ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <p class="eyebrow">Portofolio • Siswa SMK TKJ</p>
+        <h1>Perkenalkan<br /><span>Valentino.</span></h1>
+        <p class="hero-copy">Saya adalah siswa Teknik Komputer dan Jaringan yang tertarik pada teknologi, pengembangan website, serta jaringan komputer. Saya senang belajar hal baru dan mengubah ide menjadi proyek nyata.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Lihat Proyek ↓</a>
+          <a class="button button-secondary" href="#contact">Kontak Saya ↗</a>
+        </div>
+        <p class="hero-note"><strong>Fokus saya:</strong> Web Development · Networking · Troubleshooting</p>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          
+          <img src="" alt="Foto profil Valentino" />
+        </div>
+        <div class="portrait-tag"><small>Saat ini sedang belajar</small><strong>Building & Creating ✦</strong></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <p class="eyebrow">01 — Tentang Saya</p>
+        <h2 class="section-title">Sedikit tentang saya.</h2>
+        <p class="section-intro">Bagian ini berisi perkenalan singkat dan informasi dasar yang bisa kamu sesuaikan.</p>
+        <div class="about-grid">
+          <div class="panel about-highlight">
+            <div>
+              <div class="big-number">01<span style="color:var(--text)">.</span></div>
+              <h3 style="margin:12px 0">Terus belajar, terus berkembang.</h3>
+            </div>
+            <p>Saya percaya kemampuan terbaik dibangun lewat rasa ingin tahu, latihan, dan proyek yang dikerjakan sampai selesai.</p>
+          </div>
+          <div class="panel about-text">
+            <p>Saya merupakan siswa SMK jurusan <strong>Teknik Komputer dan Jaringan (TKJ)</strong>. Saya tertarik mempelajari cara kerja komputer, jaringan, dan teknologi web, termasuk praktik langsung dan pemecahan masalah.</p>
+            <p>Portofolio ini saya gunakan untuk mendokumentasikan kemampuan, pengalaman belajar, serta proyek yang pernah saya kerjakan.</p>
+            <div class="info-grid">
+              <div class="info-item"><small>Nama</small><strong>Valentino</strong></div>
+              <div class="info-item"><small>Pendidikan</small><strong>SMK — TKJ</strong></div>
+              <div class="info-item"><small>Bahasa</small><strong>Indonesia · Inggris</strong></div>
+              <div class="info-item"><small>Sertifikat</small><strong>TOEIC 770</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" style="background:rgba(255,255,255,.018);border-block:1px solid var(--border)">
+      <div class="container">
+        <p class="eyebrow">02 — Keahlian</p>
+        <h2 class="section-title">Hal yang sedang saya kuasai.</h2>
+        <p class="section-intro">Ubah daftar ini sesuai kemampuan yang benar-benar kamu miliki. Tidak harus menguasai semuanya sekaligus.</p>
+        <div class="skills-grid">
+          <article class="panel skill-card">
+            <div class="skill-icon">&lt;/&gt;</div><h3>Web Development</h3>
+            <p>Membuat halaman web yang terstruktur, menarik, dan responsif.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive Design</span></div>
+          </article>
+          <article class="panel skill-card">
+            <div class="skill-icon">⌘</div><h3>Jaringan Komputer</h3>
+            <p>Belajar konfigurasi jaringan, troubleshooting, dan infrastruktur jaringan.</p>
+            <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Routing dasar</span><span class="tag">Fiber optik</span></div>
+          </article>
+          <article class="panel skill-card">
+            <div class="skill-icon">⚙</div><h3>Sistem & Teknologi</h3>
+            <p>Eksplorasi sistem operasi, virtualisasi, dan proyek teknologi.</p>
+            <div class="tags"><span class="tag">Windows</span><span class="tag">VMware</span><span class="tag">IoT dasar</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="eyebrow">03 — Proyek</p>
+        <h2 class="section-title">Beberapa hal yang pernah saya kerjakan.</h2>
+        <p class="section-intro">Jadikan bagian ini sebagai bukti nyata kemampuanmu. Ganti contoh di bawah dengan proyek yang benar-benar kamu kerjakan.</p>
+        <div class="projects-grid">
+          <article class="panel project-card">
+            <span class="project-label">Web Development</span>
+            <h3>Website Porsche 911</h3>
+            <p>Website bertema otomotif untuk melatih struktur HTML, styling CSS, dan desain halaman yang responsif.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+            <a class="project-link" href="#contact">Lihat detail ↗</a>
+          </article>
+          <article class="panel project-card">
+            <span class="project-label">Networking</span>
+            <h3>Praktik Jaringan & Fiber Optik</h3>
+            <p>Dokumentasi praktik pembelajaran jaringan, instalasi kabel, atau kegiatan PKL. Tambahkan foto dan detail tugasmu.</p>
+            <div class="tags"><span class="tag">Networking</span><span class="tag">Troubleshooting</span></div>
+            <a class="project-link" href="#contact">Lihat detail ↗</a>
+          </article>
+          <article class="panel project-card">
+            <span class="project-label">Eksperimen</span>
+            <h3>Lab Virtualisasi / IoT</h3>
+            <p>Catatan eksperimen menggunakan mesin virtual atau perangkat IoT, lengkap dengan tujuan dan hasil pengujian.</p>
+            <div class="tags"><span class="tag">VMware</span><span class="tag">IoT</span></div>
+            <a class="project-link" href="#contact">Lihat detail ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education" style="background:rgba(255,255,255,.018);border-block:1px solid var(--border)">
+      <div class="container">
+        <p class="eyebrow">04 — Pendidikan & Pencapaian</p>
+        <h2 class="section-title">Perjalanan belajar.</h2>
+        <div class="education-list">
+          <article class="panel education-item">
+            <div class="education-date">Saat ini</div>
+            <div><h3>SMK — Teknik Komputer dan Jaringan</h3><p>Isi nama sekolah, tahun masuk, dan perkiraan tahun lulus. Contoh: 2024–2027.</p></div>
+          </article>
+          <article class="panel education-item">
+            <div class="education-date">Sertifikat</div>
+            <div><h3>TOEIC — Skor 770</h3><p>Tambahkan tahun tes atau foto sertifikat jika ingin menjadikannya bukti pencapaian.</p></div>
+          </article>
+          <article class="panel education-item">
+            <div class="education-date">Pengalaman</div>
+            <div><h3>Praktik Kerja Lapangan (PKL)</h3><p>Tulis nama tempat PKL, periode, tanggung jawab, dan hal yang kamu pelajari.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <p class="eyebrow">05 — Kontak</p>
+        <h2 class="section-title">Mari terhubung.</h2>
+        <div class="contact-grid">
+          <div>
+            <p class="section-intro">Tertarik melihat proyek saya atau ingin berdiskusi? Hubungi saya lewat kontak di samping.</p>
+            <p class="contact-copy">Catatan: ganti semua alamat contoh di bawah dengan akun milikmu sebelum website dipublikasikan.</p>
+          </div>
+          <div class="panel contact-list">
+            <a class="contact-link" href="mailto:emailkamu@example.com"><span>Email</span><strong>emailkamu@example.com ↗</strong></a>
+            <a class="contact-link" href="https://github.com/usernamekamu" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>github.com/usernamekamu ↗</strong></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/usernamekamu" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>Profil LinkedIn ↗</strong></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Valentino. Dibuat dengan HTML & CSS.</span>
+      <a href="#home">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
